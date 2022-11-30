@@ -85,7 +85,23 @@ public class ArticleController {
     @PostMapping("/articles/update")
     public String update(ArticleForm form) {
         log.info(form.toString());
-        return "";
+
+        // 1: DTO를 엔티티로 변환
+        Article articleEntity = form.toEntity();
+        log.info(articleEntity.toString());
+
+        // 2: 엔티티를 DB로 저장
+        // 2-1: DB에서 기존 데이터를 가져옴
+        Article target = articleRepository.findById(articleEntity.getId())
+                .orElse(null);
+
+        // 2-2: 기존 데이터가 있다면, 값을 갱신
+        if (target != null) {
+            articleRepository.save(articleEntity);
+        }
+
+        // 3: 수정 결과 페이지로 리다이렉트
+        return "redirect:/articles/" + articleEntity.getId();
     }
 
 }
