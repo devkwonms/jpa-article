@@ -6,6 +6,7 @@ import com.jpa.jparticle.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,16 +41,17 @@ public class ArticleController {
     }
 
     @GetMapping("/articles/{id}")   //해당 URL요청을 처리하겠다는 선언
-    public String show(@PathVariable Long id){ // URL에서 id를 변수로 가져옴
+    public String show(@PathVariable Long id, Model model){ // URL에서 id를 변수로 가져옴
         log.info("id = " + id);
 
         // 1: id로 데이터를 가져옴!
+        Article articleEntity = articleRepository.findById(id).orElse(null);
 
         // 2: 가져온 데이터를 모델에 등록!
+        model.addAttribute("article", articleEntity);
 
         // 3: 보여줄 페이지를 설정!
-
-        return "";
+        return "articles/show";
     }
 
 }
