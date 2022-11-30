@@ -50,4 +50,17 @@ public class ArticleService {
         Article updated = articleRepository.save(target);
         return updated;
     }
+
+    public Article delete(Long id) {
+
+        // 대상 찾기
+        Article target = articleRepository.findById(id).orElse(null);
+        // 잘못된 요청 처리
+        if (target == null) {
+            return null;
+        }
+        // 대상 삭제
+        articleRepository.delete(target);
+        return target;
+    }
 }
