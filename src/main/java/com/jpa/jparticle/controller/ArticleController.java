@@ -57,7 +57,7 @@ public class ArticleController {
     }
 
     @GetMapping("/articles")
-    public String index() {
+    public String index(Model model) {
 
         // 1: 모든 Article을 가져온다!
 
@@ -65,10 +65,10 @@ public class ArticleController {
         List<Article> articleEntityList = articleRepository.findAll();  // 리턴타입이 다름에서 나는 오류를 해결하기 위해 findAll()를 ArrayList로 오버라이딩해줌
 
         // 2: 가져온 Article 묶음을 뷰로 전달!
+        model.addAttribute("articleList", articleEntityList);
 
         // 3: 뷰 페이지를 설정!
-
-        return "";
+        return "article/index";
     }
 
 }
