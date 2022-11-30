@@ -1,5 +1,6 @@
 package com.jpa.jparticle.service;
 
+import com.jpa.jparticle.dto.ArticleForm;
 import com.jpa.jparticle.entity.Article;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,29 @@ public class ArticleServiceTest {
         assertEquals(expected, article);
     }
 
-
+    @Test
+    void create_성공____title과_content만_있는_dto_입력() {
+        // 예상
+        String title = "라라라라";
+        String content = "4444";
+        ArticleForm dto = new ArticleForm(null, title, content);
+        Article expected = new Article(4L, title, content);
+        // 실제
+        Article article = articleService.create(dto);
+        // 비교
+        assertEquals(expected.toString(), article.toString());
+    }
+    @Test
+    void create_실패____id가_포함된_dto_입력() {
+        // 예상
+        String title = "라라라라";
+        String content = "4444";
+        ArticleForm dto = new ArticleForm(4L, title, content);
+        Article expected = null;
+        // 실제
+        Article article = articleService.create(dto);
+        // 비교
+        assertEquals(expected, article);
+    }
 
 }
