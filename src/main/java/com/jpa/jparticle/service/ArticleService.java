@@ -6,6 +6,7 @@ import com.jpa.jparticle.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,7 @@ public class ArticleService {
         articleRepository.delete(target);
         return target;
     }
-
+    @Transactional
     public List<Article> createArticles(List<ArticleForm> dtos) {
 
         // dto 묶음을 entity 묶음으로 변환
