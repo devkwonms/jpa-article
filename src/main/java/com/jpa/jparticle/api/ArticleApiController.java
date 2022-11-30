@@ -3,6 +3,7 @@ package com.jpa.jparticle.api;
 import com.jpa.jparticle.dto.ArticleForm;
 import com.jpa.jparticle.entity.Article;
 import com.jpa.jparticle.repository.ArticleRepository;
+import com.jpa.jparticle.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class ArticleApiController {
 
     @Autowired
     private ArticleRepository articleRepository;
+
+    @Autowired
+    private ArticleService articleService;
 
     // GET
     @GetMapping("/api/articles")
