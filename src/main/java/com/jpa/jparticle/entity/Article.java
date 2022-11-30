@@ -14,6 +14,7 @@ import javax.persistence.Id;
 @NoArgsConstructor // ( default constructor 추가 )
 @AllArgsConstructor // ( 해당 클래스의 모든 필드를 매개변수로 갖는 constructor 추가 )
 @ToString
+@Getter
 public class Article {
 
     @Id
