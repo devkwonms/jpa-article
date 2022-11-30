@@ -30,7 +30,7 @@ public class ArticleApiController {
 
     @GetMapping("/api/articles/{id}")
     public Article show(@PathVariable Long id) {
-        return articleRepository.findById(id).orElse(null);
+        return articleService.show(id);
     }
     // POST
     @PostMapping("/api/articles")
