@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -37,4 +38,11 @@ public class ArticleController {
 
         return "";
     }
+
+    @GetMapping("/articles/{id}")   //해당 URL요청을 처리하겠다는 선언
+    public String show(@PathVariable Long id){ // URL에서 id를 변수로 가져옴
+        log.info("id = " + id);
+        return "";
+    }
+
 }
