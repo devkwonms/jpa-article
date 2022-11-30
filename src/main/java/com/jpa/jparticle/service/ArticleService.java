@@ -72,6 +72,8 @@ public class ArticleService {
                 .map(dto -> dto.toEntity())
                 .collect(Collectors.toList());
 
+        log.info("articleList = " +  articleList.toString());
+
         // entity 묶음을 DB로 저장
         articleList.stream()
                 .forEach(article -> articleRepository.save(article));
