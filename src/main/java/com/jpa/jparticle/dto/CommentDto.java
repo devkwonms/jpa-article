@@ -1,5 +1,6 @@
 package com.jpa.jparticle.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jpa.jparticle.entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,8 @@ import lombok.ToString;
 public class CommentDto {
 
     private Long id;
+
+    @JsonProperty("article_id")
     private Long articleId;
     private String nickname;
     private String body;
