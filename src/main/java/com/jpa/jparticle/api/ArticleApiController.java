@@ -45,21 +45,10 @@ public class ArticleApiController {
     @PatchMapping("/api/articles/{id}")
     public ResponseEntity<Article> update(@PathVariable Long id,
                                           @RequestBody ArticleForm dto) {
-        // 1: DTO -> 엔티티
-        Article article = dto.toEntity();
-        log.info("id: {}, article: {}", id, article.toString());
-        // 2: 타겟 조회
-        Article target = articleRepository.findById(id).orElse(null);
-        // 3: 잘못된 요청 처리
-        if (target == null || id != article.getId()) {
-            // 400, 잘못된 요청 응답!
-            log.info("잘못된 요청! id: {}, article: {}", id, article.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
-        // 4: 업데이트 및 정상 응답(200)
-        target.patch(article);
-        Article updated = articleRepository.save(target);
-        return ResponseEntity.status(HttpStatus.OK).body(updated);
+        Article updated = articleService.update(id, dto);
+        return (updated != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(updated):
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
     // DELETE
