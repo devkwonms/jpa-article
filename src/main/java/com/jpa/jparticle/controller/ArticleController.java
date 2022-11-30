@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @Slf4j  // logging을 위한 lombok annotation
 public class ArticleController {
@@ -58,6 +60,9 @@ public class ArticleController {
     public String index() {
 
         // 1: 모든 Article을 가져온다!
+
+        //List<Article> articleEntityList = (List<Article>)articleRepository.findAll(); // type casting
+        List<Article> articleEntityList = articleRepository.findAll();  // 리턴타입이 다름에서 나는 오류를 해결하기 위해 findAll()를 ArrayList로 오버라이딩해줌
 
         // 2: 가져온 Article 묶음을 뷰로 전달!
 
