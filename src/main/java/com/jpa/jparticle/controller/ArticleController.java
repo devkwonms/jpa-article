@@ -42,6 +42,13 @@ public class ArticleController {
     @GetMapping("/articles/{id}")   //해당 URL요청을 처리하겠다는 선언
     public String show(@PathVariable Long id){ // URL에서 id를 변수로 가져옴
         log.info("id = " + id);
+
+        // 1: id로 데이터를 가져옴!
+
+        // 2: 가져온 데이터를 모델에 등록!
+
+        // 3: 보여줄 페이지를 설정!
+
         return "";
     }
 
