@@ -1,5 +1,7 @@
 package com.jpa.jparticle.dto;
 
+import com.jpa.jparticle.entity.Article;
+
 public class ArticleForm {
 
     private String title;
@@ -14,6 +16,10 @@ public class ArticleForm {
                 "title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';
+    }
+
+    public Article toEntity() {
+        return new Article(null, title, content);
     }
 
 }
