@@ -68,7 +68,7 @@ public class ArticleController {
         model.addAttribute("articleList", articleEntityList);
 
         // 3: 뷰 페이지를 설정!
-        return "article/index";
+        return "articles/index";
     }
 
 }
