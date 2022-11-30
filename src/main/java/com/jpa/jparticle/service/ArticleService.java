@@ -86,6 +86,12 @@ public class ArticleService {
         articleList.stream()
                 .forEach(article -> articleRepository.save(article));
 
+//        // 위의 stream을 for문으로 쓸시
+//        for(int i = 0; i < articleList.size(); i++){
+//            Article article = articleList.get(i);
+//            articleRepository.save(article);
+//        }
+
         // 강제 예외 발생
         articleRepository.findById(-1L).orElseThrow(
                 () -> new IllegalArgumentException("결제 실패!")
