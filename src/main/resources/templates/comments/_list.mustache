@@ -138,6 +138,21 @@
             //삭제 댓글 id 가져오기
             const commentId = commentDeletebtn.getAttribute("data-comment-id");
             console.log(`삭제 버튼 클릭: ${commentId}번 댓글`);  // "삭제 버튼 클릭: " + commentId + "번 댓글"; 과 동일 코드(백틱 문자열)
+
+            // 삭제 API 호출 및 처리
+            const url = `/api/comments/${commentId}`;
+            fetch(url, {
+                method : "DELETE"
+            }).then(response =>{
+                // 댓글 삭제 실패 처리
+                if(!response.ok){
+                    alert("댓글 삭제 실패..!");
+                    return;
+                }
+                // 댓글 삭제 성공시, 댓글을 화면에서 지우기
+                const target = document.querySelector(`#comments-${commentId}`);
+                target.remove();
+            });
         });
     });
 
