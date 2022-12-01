@@ -29,6 +29,14 @@
         // 댓글 클릭 이벤트 감지!
         commentCreateBtn.addEventListener("click", function() {
             console.log("버튼이 클릭 되었습니다.");
+            // 새 댓글 객체 생성
+            const comment = {
+                nickname: document.querySelector("#new-comment-nickname").value,
+                body: document.querySelector("#new-comment-body").value,
+                articleId: document.querySelector("#new-comment-article-id").value
+            };
+            // 댓글 객체 출력
+            console.log(comment);
         });
     }
 </script>
