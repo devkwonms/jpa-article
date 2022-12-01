@@ -3,8 +3,11 @@
         <div class="card m-2" id="comments-{{id}}">
             <div class="card-header">
                 {{nickname}}
-                <!-- 수정 버튼 추가 -->
-                <button class="btn btn-sm btn-outline-primary">수정</button>
+                <!-- Button trigger modal -->
+                <button type="button"
+                        class="btn btn-sm btn-outline-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#comment-edit-modal">수정</button>
             </div>
             <div class="card-body">
                 {{body}}
@@ -12,7 +15,6 @@
         </div>
     {{/commentDtos}}
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="comment-edit-modal" tabindex="-1">
     <div class="modal-dialog">
