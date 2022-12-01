@@ -24,7 +24,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <!-- 댓글 수정 폼 추가 -->
+                <form>
+                    <!-- 닉네임 -->
+                    <div class="mb-3">
+                        <label class="form-label">닉네임</label>
+                        <input type="text" class="form-control form-control-sm" id="edit-comment-nickname">
+                    </div>
+                    <!-- 댓글 본문 -->
+                    <div class="mb-3">
+                        <label class="form-label">댓글 내용</label>
+                        <textarea type="text" class="form-control form-control-sm" rows="3" id="edit-comment-body"></textarea>
+                    </div>
+                    <!-- 히든값 -->
+                    <input type="hidden" id="edit-comment-id">
+                    <input type="hidden" id="edit-comment-article-id">
+                    <!-- 전송버튼 -->
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="comment-update-btn">수정 완료</button>
+                </form>
             </div>
         </div>
     </div>
