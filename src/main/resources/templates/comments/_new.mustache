@@ -41,13 +41,17 @@
             // fetch() - API요청을 JS를 통해 보내줌!
             const url = "/api/articles/" + comment.article_id + "/comments";
             fetch(url,{
-                method: "post",                         //post요청
+                method: "post",                         // post요청
                 body: JSON.stringify(comment),          // comment JS 객체 -> JSON 으로 변경
                 headers: {
                     "Content-Type": "application/json"
                 }
-
-
+            }).then(response => {
+                // http 응답 코드에 따른 메시지 출력
+                const msg = (response.ok) ? "댓글이 등록되었습니다." : "댓글 등록 실패..!";
+                alert(msg);
+                // 현재 페이지 새로고침
+                window.location.reload();
             });
         });
     }
