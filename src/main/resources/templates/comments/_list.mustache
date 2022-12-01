@@ -7,7 +7,12 @@
                 <button type="button"
                         class="btn btn-sm btn-outline-primary"
                         data-bs-toggle="modal"
-                        data-bs-target="#comment-edit-modal">수정</button>
+                        data-bs-target="#comment-edit-modal"
+                        data-bs-id="{{id}}"
+                        data-bs-nickname="{{nickname}}"
+                        data-bs-body="{{body}}"
+                        data-bs-article-id="{{articleId}}">수정</button>
+
             </div>
             <div class="card-body">
                 {{body}}
@@ -46,3 +51,32 @@
         </div>
     </div>
 </div>
+
+<!-- 모달 event 처리-->
+<script>
+    {
+        // 모달 요소 선택
+        const commentEditModal = document.querySelector("#comment-edit-modal");
+
+        // 모달 event 감지
+        commentEditModal.addEventListener("show.bs.modal", function (event){
+            console.log("모달이 열렸습니다..!");
+
+            // 트리거 버튼 선택
+            const triggerBtn = event.relatedTarget;
+
+            // 데이터 가져오기
+            const id = triggerBtn.getAttribute("data-bs-id");
+            const nickname = triggerBtn.getAttribute("data-bs-nickname");
+            const body = triggerBtn.getAttribute("data-bs-body");
+            const articleId = triggerBtn.getAttribute("data-bs-article-id");
+            console.log(`${id}, ${nickname}, ${body}, ${articleId}`);
+
+            // 데이터 반영
+            document.querySelector("#edit-comment-nickname").value = nickname;
+            document.querySelector("#edit-comment-body").value = body;
+            document.querySelector("#edit-comment-id").value = id;
+            document.querySelector("#edit-comment-article-id").value = articleId;
+        });
+    }
+</script>
