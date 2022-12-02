@@ -17,8 +17,8 @@ public class DebuggingAspect {
     private Joinpoint joinpoint;
     private Object returnObj;
 
-    // 대상 메소드 선택: CommentService.create()
-    @Pointcut("execution(* com.jpa.jparticle.service.CommentService.*(..))")
+    // 대상 메소드 선택: api 패키지의 모든 메소드
+    @Pointcut("execution(* com.jpa.jparticle.api.*.*(..))")
     private void cut(){}
 
     // 실행 시점 설정 cut()의 대상이 수행되기 이전에 실행됨
