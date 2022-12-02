@@ -1,5 +1,8 @@
 package com.jpa.jparticle.ioc;
 
+import org.springframework.stereotype.Component;
+
+@Component  // 해당 클래스를 객체로 만들고 이를 IOC 컨테이너에 등록!
 public class IngredientFactory {
     public Ingredient get(String menu) {
         switch (menu){

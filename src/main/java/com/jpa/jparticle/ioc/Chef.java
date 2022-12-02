@@ -1,5 +1,8 @@
 package com.jpa.jparticle.ioc;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Chef {
     // 셰프는 식재료 공장을 알고있음
     private IngredientFactory ingredientFactory;
