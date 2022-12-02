@@ -38,4 +38,21 @@ class ChefTest {
         System.out.println(food);
 
     }
+    @Test
+    void 크리스피_치킨_요리하기(){
+
+        // 준비
+        IngredientFactory ingredientFactory = new IngredientFactory();
+        Chef chef = new Chef(ingredientFactory);
+        String menu = "크리스피 치킨";
+        // 수행
+        String food = chef.cook(menu);
+        // 예상
+        String expected = "국내산 10호 닭으로 만든 크리스피 치킨";
+        // 검증
+        assertEquals(expected,food);
+
+        System.out.println(food);
+
+    }
 }
