@@ -1,5 +1,6 @@
 package com.jpa.jparticle.api;
 
+import com.jpa.jparticle.annotation.RunningTime;
 import com.jpa.jparticle.dto.CommentDto;
 import com.jpa.jparticle.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,7 @@ public class CommentApiController {
         return ResponseEntity.status(HttpStatus.OK).body(updatedDto);
     }
     // 댓글 삭제
+    @RunningTime
     @DeleteMapping("/api/comments/{id}")
     public ResponseEntity<CommentDto> delete(@PathVariable Long id) {
         // 서비스에게 위임
