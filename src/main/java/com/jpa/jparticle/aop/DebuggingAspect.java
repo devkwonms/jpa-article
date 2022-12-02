@@ -3,6 +3,7 @@ package com.jpa.jparticle.aop;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.Joinpoint;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -12,6 +13,9 @@ import org.springframework.stereotype.Component;
 @Component  // Ioc 컨테이너가 해당 객체를 생성 및 관리
 @Slf4j
 public class DebuggingAspect {
+
+    private Joinpoint joinpoint;
+    private Object returnObj;
 
     // 대상 메소드 선택: CommentService.create()
     @Pointcut("execution(* com.jpa.jparticle.service.CommentService.create(..))")
@@ -33,5 +37,19 @@ public class DebuggingAspect {
         for (Object obj : args) {   //  foreach(향상된for문)
             log.info("{}#{}의 입력값 => {}", className, methodName, obj);
         }
+    }
+    // 실행 시점 설정 : cut()에 지정된 대상 호출 성공 후!
+    @AfterReturning(value = "cut()", returning = "returnObj")
+    public void loggingReturnValue(JoinPoint joinPoint,
+                                   Object returnObj) {
+        // 클래스명
+        String className = joinPoint.getTarget()
+                .getClass()
+                .getSimpleName();
+        // 메소드명
+        String methodName = joinPoint.getSignature()
+                .getName();
+        // 반환값 로깅
+        log.info("{}#{}의 반환값 => {}", className, methodName, returnObj);
     }
 }
