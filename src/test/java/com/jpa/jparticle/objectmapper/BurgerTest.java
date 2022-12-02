@@ -48,7 +48,8 @@ class BurgerTest {
 
         // 검증
         assertEquals(expected.toString(),burger.toString());
-        System.out.println(json);
+        JsonNode jsonNode = objectMapper.readTree(json);
+        System.out.println(jsonNode.toPrettyString());
         System.out.println(burger.toString());
 
 
